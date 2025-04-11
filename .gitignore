@@ -1,0 +1,46 @@
+# Python字节码文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django相关
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+local_settings.py
+
+# 媒体文件 - 上传的用户内容
+media/
+
+# 静态文件收集目录
+staticfiles/
+
+# 虚拟环境
+venv/
+env/
+ENV/
+
+# IDE相关文件
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 测试覆盖率报告
+.coverage
+htmlcov/
+
+# 环境变量文件
+.env
+.env.local
+
+# 其他临时文件
+*.bak
+*.tmp 
