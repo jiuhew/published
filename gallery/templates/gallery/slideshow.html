@@ -1,0 +1,62 @@
+{% extends "gallery/base.html" %}
+
+{% block title %}幻灯片展示{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <h2 class="mb-4 text-center">幻灯片展示</h2>
+        
+        {% if images %}
+            <div id="imageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for image in images %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
+                            <div class="d-flex justify-content-center bg-dark">
+                                <img src="{{ image.image.url }}" class="d-block slide-image" alt="{{ image.title }}">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ image.title }}</h5>
+                                <p>{{ image.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">上一张</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">下一张</span>
+                </button>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <a href="{% url 'home' %}" class="btn btn-primary">返回首页</a>
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                <p class="mb-0">暂无图片，请先上传图片！</p>
+                <div class="mt-3">
+                    <a href="{% url 'home' %}" class="btn btn-primary">返回首页上传图片</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% if images %}
+<script>
+    // 自动循环播放幻灯片
+    document.addEventListener('DOMContentLoaded', function() {
+        var carousel = new bootstrap.Carousel(document.getElementById('imageCarousel'), {
+            interval: 5000,  // 5秒切换一次
+            wrap: true       // 循环播放
+        });
+    });
+</script>
+{% endif %}
+{% endblock %} 
