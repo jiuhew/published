@@ -23,8 +23,7 @@ class MultipleImageUploadForm(forms.Form):
         required=False
     )
     
-    # 注意：在前端添加multiple属性
-    file_field = forms.FileField(
+    images = forms.FileField(
         widget=forms.FileInput(attrs={'class': 'form-control', 'accept': 'image/*'}),
         label='选择多张图片'
     )

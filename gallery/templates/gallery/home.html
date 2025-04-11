@@ -70,10 +70,10 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label for="multi-images" class="form-label">选择多张图片</label>
-                                <input type="file" name="images" multiple class="form-control" accept="image/*" id="multi-images" title="选择多张图片" aria-label="选择多张图片">
-                                {% if multi_form.file_field.errors %}
-                                    <div class="text-danger">{{ multi_form.file_field.errors }}</div>
+                                <label for="{{ multi_form.images.id_for_label }}" class="form-label">{{ multi_form.images.label }}</label>
+                                <input type="file" name="images" id="{{ multi_form.images.id_for_label }}" class="form-control" accept="image/*" multiple>
+                                {% if multi_form.images.errors %}
+                                    <div class="text-danger">{{ multi_form.images.errors }}</div>
                                 {% endif %}
                                 <div class="form-text">支持JPG、PNG、GIF格式图片，可以同时选择多张图片</div>
                             </div>
