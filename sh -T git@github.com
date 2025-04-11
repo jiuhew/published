@@ -1,0 +1,14 @@
+user.name=Jiuhe Wang
+user.email=wjh96369@outlook.com
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+credential.https://gitee.com.provider=generic
+init.defaultbranch=main
+http.proxy=http://127.0.0.1:31180
+http.sslverify=false
+https.proxy=http://127.0.0.1:31181
+http.https://gitee.com.proxy=
+http.https://e.coding.net.proxy=
+http.https://codeup.aliyun.com.proxy=
