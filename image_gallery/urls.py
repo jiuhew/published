@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
     3. lalala
     4. dev branch
+    5. dev2 branch
 """
 from django.contrib import admin
 from django.urls import path, include
