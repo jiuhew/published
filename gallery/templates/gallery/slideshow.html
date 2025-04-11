@@ -8,16 +8,20 @@
         <h2 class="mb-4 text-center">幻灯片展示</h2>
         
         {% if images %}
-            <div id="imageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" role="region" aria-roledescription="轮播" aria-label="图片轮播">
+            <div id="imageCarousel" class="carousel slide carousel-fade shadow" data-bs-ride="carousel" role="region" aria-roledescription="轮播" aria-label="图片轮播">
                 <div class="carousel-inner">
                     {% for image in images %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
                             <div class="d-flex justify-content-center bg-dark">
-                                <img src="{{ image.image.url }}" class="d-block slide-image" alt="{{ image.title }}" role="img" aria-label="{{ image.title }}{% if image.description %} - {{ image.description }}{% endif %}">
+                                <img src="{{ image.image.url }}" class="d-block slide-image" alt="{{ image.title|default:'图片' }}" role="img" aria-label="{{ image.title|default:'图片' }}{% if image.description %} - {{ image.description }}{% endif %}">
                             </div>
                             <div class="carousel-caption d-none d-md-block">
+                                {% if image.title %}
                                 <h5>{{ image.title }}</h5>
+                                {% endif %}
+                                {% if image.description %}
                                 <p>{{ image.description }}</p>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}
@@ -36,7 +40,7 @@
                 <a href="{% url 'home' %}" class="btn btn-primary">返回首页</a>
             </div>
         {% else %}
-            <div class="alert alert-info">
+            <div class="alert alert-info shadow">
                 <p class="mb-0">暂无图片，请先上传图片！</p>
                 <div class="mt-3">
                     <a href="{% url 'home' %}" class="btn btn-primary">返回首页上传图片</a>
