@@ -38,7 +38,7 @@
                         <div class="form-text">支持JPG、PNG、GIF格式图片</div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary w-100">上传图片</button>
+                    <button type="submit" class="btn btn-primary w-100" aria-label="上传图片">上传图片</button>
                 </form>
             </div>
         </div>
@@ -61,10 +61,10 @@
                 {% for image in images %}
                     <div class="col">
                         <div class="card h-100">
-                            <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}" style="height: 200px; object-fit: cover;">
+                            <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}" aria-describedby="desc-{{ image.id }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ image.title }}</h5>
-                                <p class="card-text">{{ image.description|truncatechars:100 }}</p>
+                                <p class="card-text" id="desc-{{ image.id }}">{{ image.description|truncatechars:100 }}</p>
                                 <p class="text-muted small">上传于: {{ image.uploaded_at|date:"Y-m-d H:i" }}</p>
                             </div>
                         </div>

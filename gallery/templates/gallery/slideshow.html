@@ -8,12 +8,12 @@
         <h2 class="mb-4 text-center">幻灯片展示</h2>
         
         {% if images %}
-            <div id="imageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div id="imageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" role="region" aria-roledescription="轮播" aria-label="图片轮播">
                 <div class="carousel-inner">
                     {% for image in images %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
                             <div class="d-flex justify-content-center bg-dark">
-                                <img src="{{ image.image.url }}" class="d-block slide-image" alt="{{ image.title }}">
+                                <img src="{{ image.image.url }}" class="d-block slide-image" alt="{{ image.title }}" role="img" aria-label="{{ image.title }}{% if image.description %} - {{ image.description }}{% endif %}">
                             </div>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ image.title }}</h5>
@@ -22,11 +22,11 @@
                         </div>
                     {% endfor %}
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev" title="上一张图片" aria-label="上一张图片">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">上一张</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next" title="下一张图片" aria-label="下一张图片">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">下一张</span>
                 </button>
